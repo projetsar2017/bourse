@@ -1,0 +1,9 @@
+bourse/models/Client.class
+bourse/models/Wallet.class
+bourse/models/Account.class
+bourse/models/Company.class
+bourse/models/Action.class
+bourse/models/Command.class
+bourse/models/Brocker.class
+bourse/models/Stock.class
+bourse/models/Bourse.class
