@@ -9,10 +9,33 @@ public class Company {
 	private List<BuyCommand> boughtCommand; // commandes achetés
 	private Stock stock;
 
-	public Company() {
-		// TODO Auto-generated constructor stub
+	/* Two constructors types */
+
+	public Company(String name) {
+		this.name = name;
 	}
 
+	public Company(String name, Stock stock) {
+		this.name = name;
+		this.stock = stock;
+	}
+
+	
+	@Override
+	public String toString() {
+		return "Company [name=" + name + ", stock=" + stock + "]";
+	}
+
+	/* add sales and boughts commands Methods */
+	public void addSoldCommand(SaleCommand command) {
+		this.getSoldCommand().add(command);
+	}
+
+	public void addBoughtCommand(BuyCommand command) {
+		this.getBoughtCommand().add(command);
+	}
+
+	/* ..... getters and setters methods ...... */
 	public String getName() {
 		return name;
 	}

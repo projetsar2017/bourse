@@ -11,4 +11,5 @@ public class Client {
 	private Wallet wallet;
 	private Account account;
 
+	
 }
