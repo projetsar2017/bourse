@@ -39,8 +39,31 @@ public class Costumer {
 
 	}
 
-	public void SurReceptionDe_AnswerBrocker() {
+	public void SurReceptionDe_AnswerBrocker(boolean answer, Command c, String message) {
+		 
+if( answer == true) {
+	
+	if ( c instanceof BuyCommand) { // il a acheté des actions
+		// MajCompte
+		this.getAccount().withdraw(c.getCompany().getStock().getStockPrice()*c.getActionsNbr()*( 1+ this.getBroker().getBuyRate() ));
+		
+	}
+	
+	if ( c instanceof SaleCommand) { // il a vendu des actions
+		// MajCompte
+		this.getAccount().addSolde(c.getCompany().getStock().getStockPrice()*c.getActionsNbr()*( 1- this.getBroker().getSaleRate() ));
+		
+		
+	}
+	// Maj  Wallet
+	getWallet().changeNbAction(c.getCompany(), c.getActionsNbr());
+	
+	System.out.println(message);
+}
 
+else {
+	System.out.println("Refus de commande car : "+message);
+}
 	}
 
 	public void sendCommand(Command c) {  
@@ -80,7 +103,7 @@ public class Costumer {
 	}
 
 	public void closeDay() {
-
+// envoie au serveur message de fin de connexion
 	}
 	
 	
