@@ -53,12 +53,13 @@ public class Costumer {
 			 * Si le prix que le client est pret a payé par action* nombre action qu'il veut + commision du courtier 
 			 * est supérieur aux prix des cations alors son peut envoyer la commande
 			 */
-		  if ( this.getAccount().getSolde() >= c.getPrice()*c.getActionsNbr()*1.10 ) {
+			BuyCommand b= (BuyCommand)c;
+		  if ( this.getAccount().getSolde() >= b.getPrice()*b.getActionsNbr()*1.10 ) {
 			  // on envoie la commande au courtier pour validation
 		  }
 		  else {
-			  System.out.println(" \n Vous voulez "+ c.getActionsNbr()+" pour un prix unitaire de "+ c.getPrice() );
-			  System.out.println("\n soit pour un total avec commission de 10% de "+ c.getPrice()*c.getActionsNbr()*1.10);
+			  System.out.println(" \n Vous voulez "+ c.getActionsNbr()+" pour un prix unitaire de "+ b.getPrice() );
+			  System.out.println("\n soit pour un total avec commission de 10% de "+ b.getPrice()*b.getActionsNbr()*1.10);
 			  System.out.println("\n Vous n'avez pas assez d'argent");
 			 
 		  }		  

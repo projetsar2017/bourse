@@ -8,10 +8,10 @@ import java.util.Map.Entry;
 public class Brocker {
 
 	private String name;
-	private Map<Client, List<BuyCommand>> buyOrderByClient;
-	private Map<Client, List<SaleCommand>> saleOrderByClient;
-	private double buyTaux = 0.1;
-	private double saleTaux = 0.2;
+	private Map<Costumer, List<BuyCommand>> buyOrderByClient;
+	private Map<Costumer, List<SaleCommand>> saleOrderByClient;
+	private double buyRate = 0.1;
+	private double saleRate = 0.2;
 	private Account account;
 
 	public Brocker() {
@@ -61,8 +61,8 @@ public class Brocker {
 		return command.getPrice() * buyTaux;
 	}
 
-	public double saleComission(SaleCommand command) {
-		return command.getPrice() * saleTaux;
+	public double saleComission(SaleCommand command) { // on calcule le prix de chaque action vendu ( dans stock et non command) * le nombre d'action vendu* taux
+		return command.getCompany().getStock().getStockPrice() * command.getActionsNbr()*saleTaux;
 	}
 
 	/* ... accumulate the money earned Method... */
@@ -77,7 +77,7 @@ public class Brocker {
 	 */
 	public void sendActionsPriceUpdated(List<Company> list) {
 		String message;
-		for (Entry<Client, List<BuyCommand>> client : this.buyOrderByClient.entrySet()) {
+		for (Entry<Costumer, List<BuyCommand>> client : this.buyOrderByClient.entrySet()) {
 			{
 				message = " c'est " + this.getName() + " Voila les prix des actions mise a jours : \n";
 				for (Company compagny : list)
@@ -99,7 +99,7 @@ public class Brocker {
 			if (command instanceof SaleCommand)	
 				message = message + " de vente "+ command.toString()+" est bien validé par la bourse";
 			
-			command.getClient() //  // To accomplate ::: send it to each client
+			command.getCostumer(); //  // To accomplate ::: send it to each client
 	 }
 
 	/*
@@ -117,18 +117,19 @@ public class Brocker {
 
 			 
 			 
-			 
-			 
-			 
-	private String getName() {
+	public double getBuyRate() {
+		return buyRate;
+	}		 
+
+	public double getSaleRate() {
+		return saleRate;
+	}		
+	
+	public String getName() {
 		return this.name;
 	}
 
 	public Account getAccount() {
 		return account;
 	}
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 6ee7beeadc1050452bbdac43945de5ec515ef57c

@@ -31,7 +31,7 @@ public class Account {
 
 	}
 
-	private double getSolde() {
+	public double getSolde() {
 		return this.solde;
 	}
 

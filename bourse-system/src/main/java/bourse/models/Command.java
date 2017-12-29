@@ -2,35 +2,29 @@ package bourse.models;
 
 public class Command {
 
-	private double price;
 	private int actionsNbr;
+	private int idStock;
 
 	private Company company;
 	private Brocker brocker;
 	private Costumer client;
 
-	public Command(double price, int actionsNbr, Company company, Brocker brocker, Costumer client) {
-		this.price = price;
+	public Command(int actionsNbr, Company company, Costumer client) {
 		this.actionsNbr = actionsNbr;
 		this.company = company;
-		this.brocker = brocker;
 		this.client = client;
+		this.brocker = client.getBroker();
 	}
 
 	@Override
 	public String toString() {
-		return "Command [price=" + price + ", actionsNbr=" + actionsNbr + ", company=" + company + ", brocker="
+		return "Command  : actionsNbr=" + actionsNbr + ", company=" + company + ", brocker="
 				+ brocker + ", client=" + client + "]";
 	}
 
 	/* Getters and Setters list */
-	public double getPrice() {
-		return price;
-	}
+	
 
-	public void setPrice(double price) {
-		this.price = price;
-	}
 
 	public int getActionsNbr() {
 		return actionsNbr;
@@ -48,7 +42,7 @@ public class Command {
 		return brocker;
 	}
 
-	public Costumer getClient() {
+	public Costumer getCostumer() {
 		return client;
 	}
 

@@ -4,6 +4,7 @@ public class Stock {
 
 	public int prixAction;
 	public int actionsNbr;
+	public int idStock;
 
 	public Stock(int prixaction, int actionsnbr) {
 		this.prixAction = prixaction;

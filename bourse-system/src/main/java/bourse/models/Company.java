@@ -5,6 +5,7 @@ import java.util.List;
 public class Company {
 
 	private String name;
+	private int idCompany;
 	private List<SaleCommand> soldCommand; // commandes vendu
 	private List<BuyCommand> boughtCommand; // commandes achetés
 	private Stock stock;
