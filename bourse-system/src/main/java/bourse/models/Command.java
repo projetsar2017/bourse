@@ -7,9 +7,9 @@ public class Command {
 
 	private Company company;
 	private Brocker brocker;
-	private Client client;
+	private Costumer client;
 
-	public Command(double price, int actionsNbr, Company company, Brocker brocker, Client client) {
+	public Command(double price, int actionsNbr, Company company, Brocker brocker, Costumer client) {
 		this.price = price;
 		this.actionsNbr = actionsNbr;
 		this.company = company;
@@ -48,7 +48,7 @@ public class Command {
 		return brocker;
 	}
 
-	public Client getClient() {
+	public Costumer getClient() {
 		return client;
 	}
 
