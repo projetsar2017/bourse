@@ -127,4 +127,8 @@ public class Brocker {
 	public Account getAccount() {
 		return account;
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 6ee7beeadc1050452bbdac43945de5ec515ef57c

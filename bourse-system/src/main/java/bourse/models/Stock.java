@@ -37,6 +37,7 @@ public class Stock {
 	/*
 	 * .......... getters and setters list for PrixActions and ActionsNbr ......
 	 */
+	
 	public int getPrixAction() {
 		return prixAction;
 	}

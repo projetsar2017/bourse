@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+package bourse.models;
+
+import java.util.List;
+
+package bourse.models;
+
+import java.io.BufferedReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 public class Bourse {
 
 	public List<Company> campanies; // List des entreprises
@@ -22,72 +33,6 @@ public class Bourse {
 		// TODO Auto-generated constructor stub
 	}
 	 
-	
-
-	public static List<Brocker> recupererListeBrockers(String filename) {
-		
-		try{// creer un fichier file name concenrnant brocker 
-			BufferedReader reader = new BufferedReader(new FileReader(new File(filename)));
-			String line = reader.readLine();
-            
-			if (line.equals(" brockers ")) {
-				List<Brocker> brockerConnecty = new ArrayList<Brocker>();
-                
-				line = reader.readLine();
-                
-				while(!line.equals(" ")) {
-                    
-					String idBrocker = line.substring(0,2);  // 01 hajar
-					String nomBrocker = line.substring(4);
-                    
-					Brocker b = new Brocker(nomBrocker,idBrocker);
-					brockerConnecty.add(b);
-					line = reader.readLine();
-				}
-                
-				return brockerConnecty;
-			}
-			else{
-				System.err.println( " vous etes trompé de fichier ." );
-				return null;
-			}
-		}
-		catch(Exception e) {
-			return null;
-		}
-	}
-    
-	public static List<Client> recupererListeC(String filename) {
-		try{
-			BufferedReader reader = new BufferedReader(new FileReader(new File(filename)));
-			String line = reader.readLine();
-            
-			if (line.equals(" Clients")) {
-				List<Client> listeClient= new ArrayList<Client>();
-                
-				line = reader.readLine();
-                
-				while(!line.equals(" ")) {
-                    
-					String idClient = line.substring(0,2);
-					String nomClient = line.substring(4);
-                    
-					Client c = new Client(nomClient,idClient);
-					listeClient.add(c);
-					line = reader.readLine();
-				}
-                
-				return listeClient;
-			}
-			else{
-				System.err.println( " vous etes trompé de fichier  de client . " );
-				return null;
-			}
-		}
-		catch(Exception e) {
-			return null; 
-		}
-	}
 	 public List<Integer> getResultatBoughtCommand() {
 	        List<Integer> resultat = new ArrayList<Integer>();
 	        
@@ -137,5 +82,3 @@ public class Bourse {
 	 
 	 
 }
-
-    
