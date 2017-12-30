@@ -1,9 +1,13 @@
 package bourse.models;
-
+import java.io.*;
+import java.net.*;
 import java.util.List;
 
 public class Costumer {
 
+	
+	
+	
 	private String name;
 	private int idClient ;
 	private Brocker brocker;
@@ -12,6 +16,16 @@ public class Costumer {
 	private List<BuyCommand> boughtCommands; // commandes achetés
 	private Wallet wallet;
 	private Account account;
+	
+	/*******COMMUNICATION TCP ******/
+	
+	int port=4020;  // idClient ?
+    InetAddress hote=null;
+    Socket sc=null;
+    BufferedReader in;
+    PrintWriter out;
+    
+    /*************/
 
 	public Costumer(String name) {
 		this.name=name;
@@ -30,6 +44,35 @@ public class Costumer {
 	// faire maj du compte des que reception accord du courtie
 
 	public void brockerSubscription() {
+		
+                try {
+					hote =InetAddress.getLocalHost();
+				} catch (UnknownHostException e1) {
+					e1.printStackTrace();
+				}
+      
+        
+        try{
+            
+            sc = new Socket(hote,port);
+            in = new BufferedReader(new InputStreamReader(sc.getInputStream()));
+            out =new PrintWriter(sc.getOutputStream(),true);
+            System.out.println("Demande de connexion au serveur Courtier");
+            out.println("Bonjour, je suis le client "+ getIdClient()+" je souhaite m'inscrire à vos services de courtier");
+
+            String rep=in.readLine();
+
+            
+        }
+        catch(IOException e){
+            System.err.println("Impossible de faire la demande de connexion, problème de socket client : " +e);
+        }
+        finally{
+            try{
+                sc.close();
+            }
+            catch (IOException e){}
+        }	      
   
 	}
 	public void SurReceptionDe_Market() {
